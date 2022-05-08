@@ -12,6 +12,13 @@ proto:
 		./core/*.proto ./core/contract/*.proto
 		
 
+.PHONY: clean-proto
+clean-proto: 
+
+	rm -f ./core/*.pb.go && rm -f ./core/contract/*.pb.go
+		
+
+
 
 .PHONY: tidy
 tidy:
