@@ -9,13 +9,12 @@ proto:
 		--go_out=. \
 		--go_opt=paths=source_relative \
 		--experimental_allow_proto3_optional=true \
-		./core/*.proto ./core/contract/*.proto
+		./core/*.proto ./api/*.proto
 		
 
 .PHONY: clean-proto
 clean-proto: 
-
-	rm -f ./core/*.pb.go && rm -f ./core/contract/*.pb.go
+	rm -f ./core/*.pb.go && rm -f ./api/*.pb.go
 		
 
 
