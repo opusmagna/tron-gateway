@@ -8,6 +8,8 @@ proto:
 		--proto_path=${GOPATH}/src:. \
 		--go_out=. \
 		--go_opt=paths=source_relative \
+		--go-grpc_out=. \
+		--go-grpc_opt=paths=source_relative \
 		--experimental_allow_proto3_optional=true \
 		./core/*.proto ./api/*.proto
 		
