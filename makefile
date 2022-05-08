@@ -9,15 +9,27 @@ proto:
 		--go_out=. \
 		--go_opt=paths=source_relative \
 		--experimental_allow_proto3_optional=true \
-		./*/*.proto
+		./core/*.proto ./core/contract/*.proto
 		
 
 
+.PHONY: tidy
+tidy:
+	@echo "[TIDY] Running go mod tidy"
+	@go mod tidy
 	
 .PHONY: test
 test:
 	go test -v ./... -cover
 
-.PHONY: docker
-docker:
-	docker build . -t jac-service:latest
+
+.PHONY: push
+push:
+	@echo "[BUILD] Committing and pushing to remote repository"
+	@echo " - Committing"
+	@git add META
+	@git commit -am "v$(VERSION)"
+	@echo " - Tagging"
+	@git tag v${VERSION}
+	@echo " - Pushing"
+	@git push --tags origin ${BRANCH}
